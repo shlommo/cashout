@@ -228,6 +228,7 @@ input::-webkit-inner-spin-button {
     margin-top: 12px;
     margin-bottom: 40px;
     background-color: #F7D145;
+    border-radius: 25px;
 }
 
 .b-whithdrawal--step-one .btn {
