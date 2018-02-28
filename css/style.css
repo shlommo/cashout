@@ -207,14 +207,18 @@ input::-webkit-inner-spin-button {
 
 .btn {
     display: block;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
+    width: 100%;
     padding: 10px 40px;
-    background-color: #F7D145;
-    color: black;
+    background-color: transparent;
+    color: #000;
     border-radius: 25px;
     text-transform: uppercase;
     font-size: 14px;
     line-height: 1.4;
+    box-sizing: border-box;
+    text-align: center;
+    -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
 }
 
 .btn-block {
@@ -223,13 +227,7 @@ input::-webkit-inner-spin-button {
     margin-right: auto;
     margin-top: 12px;
     margin-bottom: 40px;
-}
-
-.btn--card {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    background-color: #F7D145;
 }
 
 .b-whithdrawal--step-one .btn {
