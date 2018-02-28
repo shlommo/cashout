@@ -22,18 +22,10 @@
 						<span class="card-frame__title">номер карты</span>
 
 						<div class="field field--complex">
-							<div class="field__cell">
-								<input type="number" name="panOne" id="creditCardNumberOne" maxlength="4" autocomplete="off" title="Номер карты"/>
-							</div>
-							<div class="field__cell">
-								<input type="number" name="panTwo" id="creditCardNumberTwo" maxlength="4" autocomplete="off" title="Номер карты"/>
-							</div>
-							<div class="field__cell">
-								<input type="number" name="panThree" id="creditCardNumberThree" maxlength="4" autocomplete="off" title="Номер карты"/>
-							</div>
-							<div class="field__cell">
-								<input type="number" name="panFour" id="creditCardNumberFour" maxlength="6" autocomplete="off" title="Номер карты"/>
-							</div>
+							<input type="number" name="panOne" id="creditCardNumberOne" maxlength="4" autocomplete="off" pattern="[0-9]{4}" data-card-type="cardNumber" title="Номер карты"/>
+							<input type="number" name="panTwo" id="creditCardNumberTwo" maxlength="4" autocomplete="off" pattern="[0-9]{4}" data-card-type="cardNumber" title="Номер карты"/>
+							<input type="number" name="panThree" id="creditCardNumberThree" maxlength="4" autocomplete="off" pattern="[0-9]{4}" data-card-type="cardNumber" title="Номер карты"/>
+							<input type="number" name="panFour" id="creditCardNumberFour" maxlength="6" autocomplete="off" pattern="[0-9]{4}" data-card-type="cardNumber" title="Номер карты"/>
 						</div>
 					</div>
 
@@ -41,7 +33,7 @@
 						<input type="submit" value="Продолжить" class="btn btn--card"/>
 					</div>
 
-					<input name="pan" id="creditCardNumber" type="hidden" maxlength="23" autocomplete="off" title="Номер карты"/>
+					<input name="pan" id="creditCardNumberHidden" type="hidden" maxlength="23" autocomplete="off" title="Номер карты"/>
 					<input name="cardHolder" id="card-holder-name" type="hidden" autocomplete="off" maxlength="32" title="Имя держателя" value="beeline user"/>
 					<input name="checkData" value="" id="checkData" type="hidden"/>
 					<input name="tranGUID" value="604406d7-4785-46aa-9235-902643b83765" id="tranGUID" type="hidden"/>

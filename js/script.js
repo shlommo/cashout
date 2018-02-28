@@ -1,26 +1,19 @@
-$(document).on('submit', '#withdrawal-form', function () {
+$(document).on('submit', '#withdrawal-form', function (e) {
 	// Checking card number
 	var $this = $(this),
-		cardNumber = $this.find('#creditCardNumber').val().replace(/[^\d]+/g, ''),
+		cardNumber = $this.find('#creditCardNumberHidden').val(),
 		cardHolder = $this.find('#card-holder-name').val(),
 		$submitBtn = $this.find('input[type=submit]'),
 		reg = /^[a-zA-Z\.\- ]+$/;
 
-	$submitBtn.prop('disabled', true);
-
 	if ((cardNumber.length < 15) || (!valid_credit_card(cardNumber))) {
-		console.log(!valid_credit_card(cardNumber));
+		// console.log(!valid_credit_card(cardNumber));
 		alert("Заполните корректно номер карты!");
-		$submitBtn.prop('disabled', false);
 		return false;
 	}
 
-	if ((cardHolder.length < 3) || (!cardHolder.match(reg))) {
-		alert("Заполните поле Владелец карты, английскими буквами!");
-		$submitBtn.prop('disabled', false);
-		return false;
-	}
-
+	disableCardNumberHelpers();
+	$this = $this.serialize();
 	showLoader();
 	return true;
 });
@@ -91,6 +84,43 @@ function showLoader() {
 function hideLoader() {
 	$('.preloader').hide();
 }
+
+function disableCardNumberHelpers() {
+	$('[data-card-type="cardNumber"]').each(function (index, item) {
+		$(item).prop('disabled', true);
+	});
+}
+
+function getCreditNumberVal() {
+	var allNumberVal = '';
+
+	$('[data-card-type="cardNumber"]').each(function (index, item) {
+		allNumberVal += $(item).val();
+	});
+
+	return allNumberVal;
+}
+
+$(document).on('keyup', '[data-card-type="cardNumber"]', function (e) {
+	var input = $(e.target),
+		creditCardNumberHidden = $('#creditCardNumberHidden');
+
+	creditCardNumberHidden.val(getCreditNumberVal());
+
+	if (input.val().length === 4 || input.val().length > 3) {
+		input.next().focus();
+	} else if (input.val().length === 0 && e.key === "Backspace") {
+		input.prev().focus();
+	}
+});
+
+$(document).on('keydown', '[data-card-type="cardNumber"]', function (e) {
+	var input = $(e.target);
+
+	if (input.val().length > +input.attr('maxlength') - 1 && e.key !== "Backspace") {
+		return false;
+	}
+});
 
 $(document).ready(function () {
 	$('input[type=text]').each(function (idx, el) {
