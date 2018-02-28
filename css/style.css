@@ -136,6 +136,27 @@ button:focus, input:focus {
     position: relative
 }
 
+.field--complex {
+    font-size: 0;
+}
+
+.field__cell {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    padding-left: 2px;
+    padding-right: 2px;
+    box-sizing: border-box;
+}
+
+.field__cell:first-child {
+    padding-left: 0;
+}
+
+.field__cell:last-child {
+    padding-right: 0;
+}
+
 .field input {
     display: block;
     width: 100%;
